@@ -1,0 +1,79 @@
+<html>
+
+<head>
+
+
+</head>
+
+<body>
+    <textarea name="" id="textarea" cols="130" rows="20"></textarea>
+    <div></div>
+    <button id='doCompiler'>编译</button>
+    <div>output</div>
+    <pre id='output'></pre>
+    <script type="text/javascript" src="http://localhost:8083/syntax.js"></script>
+    <script>
+        let textarea, button, output;
+        window.addEventListener('load', () => {
+            output = document.getElementById('output');
+            button = document.getElementById('doCompiler');
+            textarea = document.getElementById('textarea');
+            let outputs = []
+            console.log = function(...args){
+                outputs = outputs.concat(args);
+            }
+            button.addEventListener('click', (e) => {
+                outputs = [];
+                 window.compiler(textarea.value)
+                 output.innerHTML = outputs.join('\n');
+            })
+            textarea.value =
+                `//定义log
+                int fcc=1;
+                fcc++;
+                int bfff= 2;
+                bfff/=2;
+                invoke(log,~bbb~,bfff);
+                                def logParam(int a){        
+                                       invoke(log,a);
+                                }
+                               
+                               def fw(int a){
+                                  
+                                   while(a){
+                                      a=a-1;
+                                      invoke(log,a);
+                                    }
+                
+                                   int b= 2;
+                                  b/=2;
+                                  invoke(log,~bbb~,b);
+                               }
+                               
+                                //定义累加
+                                def accu(int begin,int end,int skip){
+                                    int accu= 0,a;
+                            
+                                    for(a=begin;a<=end;a++){
+                                        if(a == !skip ){
+                            
+                                        }
+                                        else{
+                                            accu = accu+a;     
+                                        }
+                                    }
+                                    return accu;
+                                }
+                                // 空格需要
+                                string a = ~i    Am   String~ ;
+                                int b = invoke(accu,0,50,0);
+                                invoke(log,a,b);
+                                invoke(logParam,123421212,a);
+                                //从0加到100，跳过10
+                                invoke(log,invoke(accu,0,100,10));
+                                invoke(log,invoke(fw,30))`
+        })
+    </script>
+</body>
+
+</html>
