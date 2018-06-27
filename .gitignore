@@ -4,6 +4,7 @@ coverage/
 node_modules
 update.tar.gz
 yarn.error
+dist
 src/**/*.js
 src/**/*.js.map
 !src/client/lib/*.js
